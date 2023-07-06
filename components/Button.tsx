@@ -8,11 +8,12 @@ export const Button = ({
 	title,
 	disabled,
 	handleClick,
+	buttonType,
 }: ButtonProps) => (
 	<button
 		className={`custom-btn ${containerStyles}`}
 		disabled={disabled}
-		type={'button'}
+		type={buttonType}
 		onClick={handleClick}
 	>
 		<span className='flex-1'>{title}</span>

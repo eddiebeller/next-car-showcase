@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from './Button';
-import heroImage from '../public/hero.png'
+import heroImage from '../public/hero.png';
 
 export const Hero = () => {
 	const handleClick = () => {
@@ -27,8 +27,8 @@ export const Hero = () => {
 			</div>
 			<div className='hero__image-container'>
 				<div className='hero__image'>
-					<Image src={heroImage} alt='hero' fill className='object-contain'/>
-          <div className='hero__image-overlay'></div>
+					<Image src={heroImage} alt='hero' fill className='object-contain' />
+					<div className='hero__image-overlay'></div>
 				</div>
 			</div>
 		</section>
