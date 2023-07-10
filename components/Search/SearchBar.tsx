@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { SearchManufacturer } from './SearchItems/SearchManufacturer';
 
-export const Search = () => {
+export const SearchBar = () => {
 	const [manufacturer, setManufacturer] = useState('')
 	const handleSubmit = () => {};
 	return (

@@ -1,6 +1,6 @@
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
-import { Search } from '@/components/Search/Search';
+import { SearchBar } from '@/components/Search/SearchBar';
 import Image from 'next/image';
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
 					<p className=''>Explore the cars might you like.</p>
 				</div>
 				<div className='home__filters'>
-					<Search />
+					<SearchBar />
 					<div className='home__filter-container'>
 						<Filter type='fuel' />
 						<Filter type='year' />

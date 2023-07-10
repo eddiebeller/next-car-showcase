@@ -9,16 +9,17 @@ export const SearchManufacturer = ({
 	setManufacturer,
 }: ManufacturerProps) => {
 	const [query, setQuery] = useState('');
+
 	const filteredManufacturers =
 		query === ''
 			? manufacturers
 			: manufacturers.filter((item) => {
-					return item.toLowerCase().includes(query.toLowerCase().trim());
+					return item.toLowerCase().includes(query.toLowerCase());
 			  });
 
 	return (
 		<div className='search-manufacturer'>
-			<Combobox>
+			<Combobox value={manufacturer} onChange={setManufacturer}>
 				<div className='relative w-full'>
 					<Combobox.Button className='absolute top-[14px]'>
 						<Image
@@ -42,7 +43,6 @@ export const SearchManufacturer = ({
 						leaveFrom='opacity-100'
 						leaveTo='opacity-0'
 						afterLeave={() => setQuery('')}
-						// show={false}
 					>
 						<Combobox.Options>
 							{filteredManufacturers.map((item) => (
@@ -55,7 +55,24 @@ export const SearchManufacturer = ({
 										}`
 									}
 								>
-									{item}
+									{({ selected, active }) => (
+										<>
+											<span
+												className={`block truncate ${
+													selected ? 'font-medium' : 'font-normal'
+												}`}
+											>
+												{item}
+											</span>
+											{selected ? (
+												<span
+													className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+														active ? 'text-white' : 'text-teal-600'
+													}`}
+												></span>
+											) : null}
+										</>
+									)}
 								</Combobox.Option>
 							))}
 						</Combobox.Options>
