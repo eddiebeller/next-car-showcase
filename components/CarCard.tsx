@@ -78,7 +78,9 @@ export const CarCard = ({ car }: CarCardProps) => {
 				<div className='car-card__btn-container'>
 					<Button
 						title='View more..'
-						containerStyles='w-full py-[16px] rounded-full bg-primary-blue text-white text-[14px] leading-[17px] font-bold'
+						containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
+						icon='/right-arrow.svg'
+						titleStyles='text-white text-[14px] leading-[17px] font-bold'
 						handleClick={() => setIsOpen(true)}
 					/>
 				</div>
