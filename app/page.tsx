@@ -1,3 +1,4 @@
+import { CarCard } from '@/components/CarCard';
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
 import { SearchBar } from '@/components/Search/SearchBar';
@@ -33,7 +34,13 @@ export default async function Home() {
 						<p>{allCars?.message}</p>
 					</div>
 				) : (
-					<section>We have some cars for you...</section>
+					<section>
+						<div className='home__cars-wrapper'>
+							{allCars?.map((car) => (
+								<CarCard car={car} />
+							))}
+						</div>
+					</section>
 				)}
 			</div>
 		</main>
