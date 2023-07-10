@@ -3,6 +3,7 @@ import { CarProps } from '@/types';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { Button } from './Button';
+import { CarDetailsModal } from './CarDetailsModal';
 
 interface CarCardProps {
 	car: CarProps;
@@ -85,6 +86,7 @@ export const CarCard = ({ car }: CarCardProps) => {
 					/>
 				</div>
 			</div>
+      <CarDetailsModal isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car}/>
 		</div>
 	);
 };
