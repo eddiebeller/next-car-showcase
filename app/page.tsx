@@ -1,9 +1,14 @@
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
 import { SearchBar } from '@/components/Search/SearchBar';
+import { fetchAllCars } from '@/utils';
 import Image from 'next/image';
 
-export default function Home() {
+export default async function Home() {
+	const allCars = await fetchAllCars();
+
+	const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
 	return (
 		<main className='overflow-hidden'>
 			<Hero />
@@ -19,6 +24,17 @@ export default function Home() {
 						<Filter type='year' />
 					</div>
 				</div>
+
+				{isDataEmpty ? (
+					<div>
+						<h2 className='text-black text-xl font-bold'>
+							No cars data loaded...
+						</h2>
+						<p>{allCars?.message}</p>
+					</div>
+				) : (
+					<section>We have some cars for you...</section>
+				)}
 			</div>
 		</main>
 	);
