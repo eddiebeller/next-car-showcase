@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { ButtonProps } from '@/types';
-import { title } from 'process';
 
 export const Button = ({
 	containerStyles,
