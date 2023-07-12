@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { Button } from './Button';
 import { CarDetailsModal } from './CarDetailsModal';
+import { generateCarImageUrl } from '@/utils';
 
 interface CarCardProps {
 	car: CarProps;
@@ -11,7 +12,7 @@ interface CarCardProps {
 
 export const CarCard = ({ car }: CarCardProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const { city_mpg, year, make, model, transmission, drive, image } = car;
+	const { city_mpg, make, model, transmission, drive } = car;
 
 	const SettingsIcon = ({ transmission, drive, city_mpg, image }) => {
 		return (
@@ -48,7 +49,7 @@ export const CarCard = ({ car }: CarCardProps) => {
 
 			<div className='relative w-full h-40 my-3 object-contain'>
 				<Image
-					src='/hero.png'
+					src={generateCarImageUrl(car)}
 					className='object-contain'
 					alt='car model'
 					fill
@@ -86,7 +87,11 @@ export const CarCard = ({ car }: CarCardProps) => {
 					/>
 				</div>
 			</div>
-      <CarDetailsModal isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car}/>
+			<CarDetailsModal
+				isOpen={isOpen}
+				closeModal={() => setIsOpen(false)}
+				car={car}
+			/>
 		</div>
 	);
 };
