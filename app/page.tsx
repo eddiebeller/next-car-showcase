@@ -2,11 +2,19 @@ import { CarCard } from '@/components/CarCard';
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
 import { SearchBar } from '@/components/Search/SearchBar';
-import { fetchAllCars } from '@/utils';
+import { fetchCars } from '@/utils';
 import Image from 'next/image';
 
-export default async function Home() {
-	const allCars = await fetchAllCars();
+export default async function Home({ searchParams }) {
+	const allCars = await fetchCars({
+		manufacturer: searchParams.manufacturer || '',
+		year: searchParams.year || 2023,
+		fuel: searchParams.fuel || '',
+		limit: searchParams.limit || 10,
+		model: searchParams.model || '',
+	});
+
+	console.log(allCars.length);
 
 	const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
