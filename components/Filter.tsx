@@ -1,14 +1,11 @@
 'use client';
+import React, { Fragment, useState } from 'react';
+import Image from 'next/image';
 import { updateSearchParams } from '@/utils';
 import { Listbox, Transition } from '@headlessui/react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { Fragment, useState } from 'react';
+import { OptionsProps } from '@/types';
 
-interface OptionsProps {
-	title: string;
-	value: string;
-}
 interface FilterProps {
 	title: string;
 	options: OptionsProps[];

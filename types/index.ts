@@ -38,3 +38,8 @@ export interface FilterProps {
 	year: number;
 	model: string;
 }
+
+export interface OptionsProps {
+	title: string;
+	value: string;
+}
