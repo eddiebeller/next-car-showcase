@@ -2,6 +2,7 @@ import { CarCard } from '@/components/CarCard';
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
 import { SearchBar } from '@/components/Search/SearchBar';
+import { ShowMore } from '@/components/ShowMore';
 import { fuels, yearsOfProduction } from '@/constants';
 import { fetchCars } from '@/utils';
 import Image from 'next/image';
@@ -16,6 +17,9 @@ export default async function Home({ searchParams }) {
 	});
 
 	const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
+	const pageNumber = (searchParams.limit || 10) / 10;
+	const isNext = (searchParams.limit || 10) > allCars.lenght;
 
 	return (
 		<main className='overflow-hidden'>
@@ -47,6 +51,7 @@ export default async function Home({ searchParams }) {
 								<CarCard car={car} />
 							))}
 						</div>
+						<ShowMore pageNumber={pageNumber} isNext={isNext} />
 					</section>
 				)}
 			</div>

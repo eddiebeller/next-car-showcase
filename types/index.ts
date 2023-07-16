@@ -7,7 +7,7 @@ export interface ButtonProps {
 	isDisabled?: boolean;
 	handleClick?: MouseEventHandler<HTMLButtonElement>;
 	buttonType?: 'button' | 'submit';
-	icon: string;
+	icon?: string;
 }
 
 export interface ManufacturerProps {
@@ -42,4 +42,9 @@ export interface FilterProps {
 export interface OptionsProps {
 	title: string;
 	value: string;
+}
+
+export interface ShowMoreProps {
+	pageNumber: number;
+	isNext: boolean;
 }
