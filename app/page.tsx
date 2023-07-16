@@ -2,6 +2,7 @@ import { CarCard } from '@/components/CarCard';
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
 import { SearchBar } from '@/components/Search/SearchBar';
+import { fuels, yearsOfProduction } from '@/constants';
 import { fetchCars } from '@/utils';
 import Image from 'next/image';
 
@@ -27,8 +28,8 @@ export default async function Home({ searchParams }) {
 				<div className='home__filters'>
 					<SearchBar />
 					<div className='home__filter-container'>
-						<Filter type='fuel' />
-						<Filter type='year' />
+						<Filter title='fuel' options={fuels} />
+						<Filter title='year' options={yearsOfProduction} />
 					</div>
 				</div>
 
