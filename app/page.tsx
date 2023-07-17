@@ -1,3 +1,5 @@
+'use client';
+
 import { CarCard } from '@/components/CarCard';
 import { Filter } from '@/components/Filter';
 import { Hero } from '@/components/Hero';
@@ -5,21 +7,46 @@ import { SearchBar } from '@/components/Search/SearchBar';
 import { ShowMore } from '@/components/ShowMore';
 import { fuels, yearsOfProduction } from '@/constants';
 import { fetchCars } from '@/utils';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-export default async function Home({ searchParams }) {
-	const allCars = await fetchCars({
-		manufacturer: searchParams.manufacturer || '',
-		year: searchParams.year || 2023,
-		fuel: searchParams.fuel || '',
-		limit: searchParams.limit || 10,
-		model: searchParams.model || '',
-	});
+export default function Home() {
+	const [allCars, setAllCars] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	// search states
+	const [manufacturer, setManufacturer] = useState('');
+	const [model, setModel] = useState('');
+
+	// filter
+	const [fuel, setFuel] = useState('');
+	const [year, setYear] = useState(2022);
+	const [limit, setLimit] = useState(10);
+
+	async function getCars() {
+		setLoading(true);
+		try {
+			const result = await fetchCars({
+				manufacturer: manufacturer || '',
+				year: year || 2022,
+				fuel: fuel || '',
+				limit: limit || 10,
+				model: model || '',
+			});
+			setAllCars(result);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setLoading(false);
+		}
+	}
+	useEffect(() => {
+		getCars();
+	}, [manufacturer, model, fuel, year, limit]);
+
+	console.log(allCars);
+
 
 	const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-
-	const pageNumber = (searchParams.limit || 10) / 10;
-	const isNext = (searchParams.limit || 10) > allCars.lenght;
 
 	return (
 		<main className='overflow-hidden'>
