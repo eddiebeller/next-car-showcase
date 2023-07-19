@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const SeachBarButton = ({ classname }: { classname: string }) => {
 	return (
-		<button type='submit' className={`-ml-3 z-10 ${classname}`}>
+		<button type='submit' className={`ml-3 z-10 ${classname}`}>
 			<Image
 				src='/magnifying-glass.svg'
 				alt='search'
